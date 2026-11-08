@@ -86,3 +86,13 @@ netlify deploy --prod          # run inside this folder; creates the site on fir
 netlify env:set ANTHROPIC_API_KEY "paste-your-key-here"
 netlify deploy --prod          # redeploy so the function sees the key
 ```
+
+## Public case artefacts on the same site
+
+The site also hosts everything the case deck links to, so no reader needs a Claude account:
+
+| Path | What it is |
+| --- | --- |
+| `/discovery-engine/` | The AI Discovery Engine: findings, the 1,246 tagged posts, live tagging of any post and "ask the evidence" |
+| `/artefacts/` | Index of the supporting documents (PDFs): AI Evidence Log, metric breakdown, research and survey, interview notes, problem definition, tester brief, success metrics and risks |
+| `/api/engine` | The function behind the engine's two live features. It accepts only those two prompt shapes, caps prompt length (16,000 characters) and requests (`ENGINE_MAX_REQUESTS_PER_10_MIN`, default 40), and uses the same `ANTHROPIC_API_KEY` |
